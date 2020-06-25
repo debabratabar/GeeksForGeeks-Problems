@@ -1,54 +1,28 @@
-/*package whatever //do not write package name here */
+package GeeksforGeeks;
 
-import java.util.*;
-import java.lang.*;
-import java.io.*;
+import java.util.Scanner;
 
-class GFG {
-	public static void main (String[] args) throws java.lang.Exception {
-		//code
-		
-		try{
-            Scanner sc= new Scanner(System.in);
-            int T=sc.nextInt();
-            for(int counter=0;counter<T;counter++) {
-
-                int n = sc.nextInt();
-                //int k=sc.nextInt();
-                int[] array = new int[n];
-                int[] final_array = new int[n];
-                for (int i = 0; i < n; i++) {
-                    array[i] = sc.nextInt();
-
-                }
-                final_array = Rotation(array);
-                for (int ele : final_array
-                ) {
-                    System.out.print(ele + " ");
-
-                }
-                System.out.println();
+public class CyclicallyRotate {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int T=sc.nextInt();
+        for (int counter=0;counter<T;counter++){
+            int N= sc.nextInt();
+            int[] arr= new int[N];
+            for (int i=0;i<N;i++){
+                arr[i]=sc.nextInt();
             }
+            int last_term = arr[N-1];
+            for (int i=N-1;i>0;i--){
+                arr[i]=arr[i-1];
+            }
+            arr[0]=last_term;
+            for (int element:arr
+                 ) {
+                System.out.print(element+" ");
 
-        }catch (Exception e){
-
+            }
         }
 
     }
-    public  static  int[] Rotation(int[] arr){
-        int[] final_array= new int[arr.length];
-        for(int i=0;i<arr.length;i++){
-            if(i+1<=arr.length-1){
-                final_array[i+1]=arr[i];
-            }
-            else
-            {
-                int index=(i+1)-(arr.length-1)-1;
-                final_array[index]=arr[i];
-            }
-        }
-
-
-        return final_array;
-	}
 }
